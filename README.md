@@ -102,7 +102,7 @@ Automated LAMP installer to run Wavelog inside a Debian container (proot-distro)
     
 -   Download the setup script:
     
-    -   wget  [https://raw.github.com/CR7BAX/termux-wavelog-lamp/main/setup.sh](https://raw.githubusercontent.com/CR7BAX/termux-wavelog-lamp/main/setup.sh)
+    -   wget  [https://raw.github.com/CS7BAX/termux-wavelog-lamp/main/setup.sh](https://raw.githubusercontent.com/CS7BAX/termux-wavelog-lamp/main/setup.sh)
         
 -   Make it executable:
     
