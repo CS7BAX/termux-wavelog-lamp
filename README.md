@@ -1,80 +1,94 @@
-termux-wavelog-lamp
+## **termux-wavelog-lamp**
+
 Automated LAMP installer (Apache, MariaDB, PHP 8.2) to run Wavelog inside a Debian container (proot-distro) on Termux, including a watchdog, Adminer and phpSysInfo.
 
-Features
-Installs and configures Apache, MariaDB and PHP 8.2 inside Debian (proot-distro) on Termux.​
+Wavelog is a web-based logging software for ham radio operators
 
-Downloads and deploys the official Wavelog repository into /var/www/html.
+(go see their sitg at https://www.wavelog.org/)
 
-Creates helper scripts to start and stop all services (Apache, MariaDB and watchdog).
+Features:
 
-Includes menu options to install Adminer (database management) and phpSysInfo (system information).​
+ 1. Installs and configures Apache, MariaDB and PHP 8.2 inside Debian (proot-distro) on Termux.​
+ 2. Downloads and deploys the official Wavelog repository into /var/www/html.
+ 3. Creates helper scripts to start and stop all services (Apache, MariaDB and watchdog).
+ 4. Includes menu options to install Adminer (database management) and phpSysInfo (system information).​
+ 5. Provides a Termux launcher command (wave) to open Debian, run the setup menu and keep the device awake while Wavelog is running.
 
-Provides a Termux launcher command (wave) to open Debian, run the setup menu and keep the device awake while Wavelog is running.
+## Step-by-step installation guide
 
-Requirements
-Android device with Termux installed.
+1.  Install the required Android apps:
+    
 
-proot-distro installed in Termux, with a Debian container already created.
+-   Install F-Droid from  [https://f-droid.org](https://f-droid.org/).
+    
+-   From F-Droid, install:
+    
+    -   Termux
+        
+    -   Termux:API
+        
+    -   A terminal emulator launcher if needed (for example a shortcut app).
+        
 
-Root shell inside Debian (login as root or use sudo).
+2.  Prepare Termux:
+    
 
-Basic Git and wget packages installed inside Debian.​
+-   Open Termux and run:
+    
+    -   pkg update
+        
+    -   pkg upgrade
+        
+    -   pkg install proot-distro termux-api tmux openssh
+        
 
-Installation
-Inside Debian (proot-distro):
+3.  Install Debian with proot-distro:
+    
 
-Clone this repository:
+-   In Termux, run:
+    
+    -   proot-distro install debian​
+        
 
-git clone https://github.com/CR7BAX/termux-wavelog-lamp.git
+4.  Configure SSH access in Termux (optional but recommended):
+    
 
-Enter the project directory:
+-   Set a Termux password:
+    
+    -   passwd
+        
+-   Check your Termux username:
+    
+    -   whoami
+        
+-   Start the SSH server:
+    
+    -   sshd​
+        
 
-cd termux-wavelog-lamp
+5.  Log into Debian:
+    
 
-Make the installer executable:
+-   From Termux, start the Debian container:
+    
+    -   proot-distro login debian​
+        
 
-chmod +x setup.sh
+6.  Download and run the installer inside Debian:
+    
 
-Run the installer:
+-   Go to the root home directory (usually already /root).
+    
+-   Download the setup script:
+    
+    -   wget  [https://raw.github.com/CR7BAX/termux-wavelog-lamp/main/setup.sh](https://raw.githubusercontent.com/CR7BAX/termux-wavelog-lamp/main/setup.sh)
+        
+-   Make it executable:
+    
+    -   chmod +x setup.sh
+        
+-   Run the installer:
+    
+    -   ./setup.sh
 
-./setup.sh
 
-Use the interactive menu to:
-
-Install the LAMP stack.
-
-Create the Wavelog database and user.
-
-Download and configure Wavelog.
-
-Install Adminer and phpSysInfo.
-
-Create the Termux launcher command wave.
-
-Termux launcher (wave)
-After creating the launcher from the menu, in a normal Termux session you can simply run:
-
-wave
-
-The launcher:
-
-Acquires a wake-lock so the device does not sleep while the server is running.
-
-Optionally updates the IP helper script (wavelog-ip.sh) if it exists.
-
-Logs into Debian via proot-distro and starts the setup.sh menu.
-
-Releases the wake-lock when you exit the menu.
-
-Accessing Wavelog
-After starting Apache, MariaDB and the watchdog from the menu, open a browser (on the phone or another device in the same network) and go to:
-
-http://PHONE_IP:8080
-
-The menu reads the IP from wavelog_ip.txt and prints the correct URL to access Wavelog.
-
-Extras
-Adminer: http://PHONE_IP:8080/adminer/
-
-phpSysInfo: http://PHONE_IP:8080/phpsysinfo/​
