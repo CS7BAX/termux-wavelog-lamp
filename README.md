@@ -12,7 +12,17 @@ LAMP refers to a classic web stack composed of Linux, Apache, MariaDB/MySQL and 
 
 Automated LAMP installer to run Wavelog inside a Debian container (proot-distro) on Termux, including a watchdog, Adminer (https://www.adminer.org/) and phpSysInfo (https://phpsysinfo.github.io/phpsysinfo/).
 
-Features:
+## Key advantages:
+
+-   Portability: Take your logging software with you anywhere, with or without Internet access.
+    
+-   Single point of configuration: Configure QRZ, QRZ CQ, Club Log, LOTW, eQSL and many other third-party services in one tool and in one place.
+    
+-   Server-side maintenance: Maintain your own server and update your files on your schedule and to your requirements.
+    
+-   Security and control: You retain full control over the server and can decide whether to expose it to the Internet or keep it completely private.
+
+## Features:
 
  1. Installs and configures Apache, MariaDB and PHP 8.2 inside Debian (proot-distro) on Termux.​
  2. Downloads and deploys the official Wavelog repository into /var/www/html.
