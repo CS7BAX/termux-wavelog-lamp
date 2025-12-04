@@ -1,7 +1,7 @@
 ## ​## **termux-wavelog-lamp**
 It is an installation script for a web server specifically designed and optimized to run the Wavelog logging software.
 
-![setup](setup.png)
+![setup](setup.png) ![setup](setup.png)
 
 Wavelog is a web-based logging application designed for ham radio operators.
 For more information, visit the official website: https://www.wavelog.org/
