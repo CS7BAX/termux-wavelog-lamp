@@ -546,6 +546,8 @@ OUT="$HOME/wavelog_ip.txt"
 # Limpa ficheiro
 > "$OUT"
 
+LAST_IP=""
+
 # Apanha todos os IPv4 não‑loopback do ifconfig
 for IP in $(ifconfig 2>/dev/null \
               | awk '/inet / && $2 != "127.0.0.1" {print $2}'); do
@@ -557,18 +559,19 @@ for IP in $(ifconfig 2>/dev/null \
         continue
     fi
 
-    # Só escreve IPs cujo primeiro octeto tem três dígitos (100–255)
-    if [[ "$FIRST_OCTET" =~ ^[0-9]{3}$ ]]; then
-        echo "$IP" >> "$OUT"
-    fi
+    # Guarda sempre o IP atual (no fim fica o último válido)
+    LAST_IP="$IP"
 done
 
-# Fallback se nada foi gravado
-if [ ! -s "$OUT" ]; then
+# Se encontrou algum IP válido, grava-o; senão, fallback
+if [ -n "$LAST_IP" ]; then
+    echo "$LAST_IP" > "$OUT"
+else
     echo "127.0.0.1" > "$OUT"
 fi
 
 echo "Saved IP(s): $(cat "$OUT")"
+
 
 EOF
 
