@@ -132,6 +132,6 @@ At this point everything is installed, and to start the server again you only ne
 
 Note: This script and the files it generates are designed to serve the Wavelog web interface over a local IP address assigned by your router or by the Android hotspot. When the phone or Android device is used in mobile hotspot mode, the script automatically detects the current IP and, at the end of the menu, displays the exact URL where the Wavelog web page is being served.
 
-{Tested on Samsung J5 (SM- J510FN) and Xiaomi Redmi NOte 10 Pro (M2101k6G)}
+{Tested on Samsung J5 (SM- J510FN) and Xiaomi Redmi Note 10 Pro (M2101k6G)}
 
 
